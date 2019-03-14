@@ -1,5 +1,5 @@
 function Promise(fn){
-    var status='pending';
+    var status='pending',successArray =[],failArray=[];
     function successNotify(){
         status = 'success';
         toDoThen.apply(undefined,arguments)
@@ -21,7 +21,6 @@ function Promise(fn){
             }
         },0)
     }
-    var successArray =[],failArray=[];
     fn.call(undefined, successNotify,failNotofy);
     this.then = function(successFn,failFn){
         successArray.push(successFn);

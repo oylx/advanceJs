@@ -9,7 +9,7 @@ class Human{
 }
 class Solider extends Human{
     constructor(options){
-        super(options)
+        super(options);
         this.战斗力=options.战斗力;
         this.id = options.id;
         this.兵种 = '美国大兵';//公有属性不能以非函数形势存在，只能放在私有属性种
