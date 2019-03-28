@@ -30,6 +30,17 @@ Array.prototype.slice = function (begin, end) {
     return result
 }
 
+Array.prototype.splice = function(begin,deleteCount){
+    let length = this.length
+    while(deleteCount && begin<length){
+        this[begin]=this[begin+deleteCount]
+        begin++
+    }
+    for(let i=2;i<arguments.length;i++){
+        this[this.length] = arguments[i]
+    }
+}
+
 /**
  * 模拟sort
  * 对原数组排序
