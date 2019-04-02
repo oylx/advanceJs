@@ -125,6 +125,11 @@ proxyFactory.wholesale(20)
 console.log(proxyFactory.productions)
 
 
+const target = {}
+const p = new Proxy(target, {})
+p.a = 3  // 被转发到代理的操作
+console.log(target.a) // 3 操作已经被正确地转发至目标对象
+
 /**
  * 发布-订阅模式
  * 通过一对一或者一对多的依赖关系，当对象发生改变时，订阅方都会收到通知。
