@@ -44,7 +44,7 @@ console.log(arr1)
  * 从第一个元素开始，该元素可以认为已经被排序
  * @param arr
  */
-function fn2(arr) {
+function insertionSort(arr) {
     let len = arr.length;
     let preIndex,current;
     for (let i = 1; i < len; i++) {//
@@ -58,7 +58,7 @@ function fn2(arr) {
     }
 }
 let arr2 = [60,40,20,80,10,30,40,70];
-fn2(arr2);
+insertionSort(arr2);
 console.log(arr2)
 
 /**
@@ -96,7 +96,94 @@ fn3(arr3,13);
 console.log(arr3)
 
 /**
- * 5.快速排序Quick Sort
+ * 5.桶排序
+ * 桶排序须知：
+ * 桶排序是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。为了使桶排序更加高效，我们需要做到这两点：
+ * 在额外空间充足的情况下，尽量增大桶的数量
+ * 使用的映射函数能够将输入的N个数据均匀的分配到K个桶中
+ * 同时，对于桶中元素的排序，选择何种比较排序算法对于性能的影响至关重要。
+ * 什么时候最快（Best Cases）：
+ * 当输入的数据可以均匀的分配到每一个桶中
+ * 什么时候最慢（Worst Cases）：
+ * 当输入的数据被分配到了同一个桶中
+ * @param arr
+ * @param bucketSize
+ * @returns {*}
+ */
+function bucketSort(arr, bucketSize) {
+    if (arr.length === 0)  return arr;
+    let i,
+        minValue = maxValue =arr[0];
+    for (i = 1; i < arr.length; i++) {
+        if (arr[i] < minValue) {
+            minValue = arr[i];                //输入数据的最小值
+        } else if (arr[i] > maxValue) {
+            maxValue = arr[i];                //输入数据的最大值
+        }
+    }
+
+    //桶的初始化
+    let DEFAULT_BUCKET_SIZE = 5;            //设置桶的默认数量为5
+    bucketSize = bucketSize || DEFAULT_BUCKET_SIZE;
+    let bucketCount = Math.floor((maxValue - minValue) / bucketSize) + 1;
+    let buckets = new Array(bucketCount);
+    for (i = 0; i < buckets.length; i++) {
+        buckets[i] = [];
+    }
+
+    //利用映射函数将数据分配到各个桶中
+    for (i = 0; i < arr.length; i++) {
+        buckets[Math.floor((arr[i] - minValue) / bucketSize)].push(arr[i]);
+    }
+
+    arr.length = 0;
+    for (i = 0; i < buckets.length; i++) {
+                           //对每个桶进行排序，这里使用了插入排序
+        for (let j = 0; j < buckets[i].length; j++) {
+            arr.push(buckets[i][j]);
+        }
+    }
+
+    return arr;
+}
+
+let arr6 = [13,13,5,6,5,0];
+bucketSort(arr6,13);
+console.log(arr6)
+
+
+let counter = [];
+/**
+ * 6.基数排序
+ * @param arr
+ * @param maxDigit
+ * @returns {*}
+ */
+function radixSort(arr, maxDigit) {
+    let mod = 10;
+    let dev = 1;
+    for (let i = 0; i < maxDigit; i++, dev *= 10, mod *= 10) {
+        for(let j = 0; j < arr.length; j++) {
+            let bucket = parseInt((arr[j] % mod) / dev);
+            if(counter[bucket]==null) {
+                counter[bucket] = [];
+            }
+            counter[bucket].push(arr[j]);
+        }
+        let pos = 0;
+        for(let j = 0; j < counter.length; j++) {
+            let value = null;
+            if(counter[j]!=null) {
+                while ((value = counter[j].shift()) != null) {
+                    arr[pos++] = value;
+                }
+            }
+        }
+    }
+    return arr;
+}
+/**
+ * 7.快速排序Quick Sort
  * 确定pivot,设置left:[] right:[]
  * @param arr
  * @returns {*}
@@ -118,7 +205,7 @@ console.log(arr4)
 
 
 /**
- * 6.归并排序Merge Sort
+ * 8.归并排序Merge Sort
  * @param arr
  * @returns {*}
  */
@@ -146,7 +233,7 @@ console.log(arr5)
 
 
 /**
- * 堆排序Heap Sort
+ * 9.堆排序Heap Sort
  * @param arr
  */
 let len;    //因为声明的多个函数都需要数据长度，所以把len设置成为全局变量
