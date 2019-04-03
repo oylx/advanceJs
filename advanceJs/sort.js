@@ -1,5 +1,5 @@
 /**
- * 冒泡排序：两两摸头法
+ * 1.冒泡排序：两两摸头法
  * 从小到大，最值浮至最后
  * @param arr
  */
@@ -17,7 +17,7 @@ sort(arr);
 console.log(arr)
 
 /**
- * 选择排序:一指禅法
+ * 2.选择排序:一指禅法Selection Sort
  * 从元素中指定最小值下标minIndex = i，每趟比较获取最小值并交换
  * @param arr
  */
@@ -40,7 +40,7 @@ console.log(arr1)
 
 
 /**
- * 插入排序:扑克牌法
+ * 3.插入排序:扑克牌法Insertion Sort
  * 从第一个元素开始，该元素可以认为已经被排序
  * @param arr
  */
@@ -62,7 +62,7 @@ fn2(arr2);
 console.log(arr2)
 
 /**
- * 计数排序（强迫症收扑克牌法）
+ * 4.计数排序（强迫症收扑克牌法）
  * 将输入的数据值转化为键存储在额外开辟的数组空间中
  * 强迫症：输入的数据必须是有确定范围的整数
  * @param arr
@@ -96,38 +96,99 @@ fn3(arr3,13);
 console.log(arr3)
 
 /**
- * 快速排序
+ * 5.快速排序Quick Sort
+ * 确定pivot,设置left:[] right:[]
  * @param arr
- * @param left
- * @param right
  * @returns {*}
  */
-function quickSort(arr, left, right) {
-    var len = arr.length,
-        partitionIndex,
-        left = typeof left != 'number' ? 0 : left,
-        right = typeof right != 'number' ? len - 1 : right;
-
-    if (left < right) {
-        partitionIndex = partition(arr, left, right);
-        quickSort(arr, left, partitionIndex-1);
-        quickSort(arr, partitionIndex+1, right);
+function quickSort(arr) {
+    if(arr.length<1) return arr;
+    let pivotIndex = Math.floor(arr.length/2)
+    let pivot = arr.splice(pivotIndex,1)[0];//splice改变原数组,返回改变值组成的数组
+    let left=[],right=[];
+    for(let i=0;i<arr.length;i++){
+        arr[i]<pivot?left.push(arr[i]):right.push(arr[i])
     }
-    return arr;
+    return quickSort(left).concat([pivot]).concat(right)
 }
 
-function partition(arr, left ,right) {     //分区操作
-    var pivot = left,                      //设定基准值（pivot）
-        index = pivot + 1;
-    for (var i = index; i <= right; i++) {
-        if (arr[i] < arr[pivot]) {
-            [arr[i],arr[index]] = [arr[index],arr[i]]
-            index++;
-        }
-    }
-    [arr[index-1],arr[pivot]]=[arr[pivot],arr[index-1]]
-    return index-1;
-}
 let arr4 =[4,5,2,1,6,45,89,23,0,41];
 quickSort(arr4)
 console.log(arr4)
+
+
+/**
+ * 6.归并排序Merge Sort
+ * @param arr
+ * @returns {*}
+ */
+function mergeSort(arr){//采用自上而下的递归方法
+    if(arr.length<2)return arr
+    let middle = Math.floor(arr.length/2),
+        left = arr.slice(0,middle),
+        right = arr.slice(middle);
+    return merge(mergeSort(left),mergeSort(right))
+}
+
+function merge(left,right){
+    let result = [];
+    while (left.length > 0 && right.length > 0) {
+        left[0]<right[0]?result.push(left.shift()):result.push(right.shift())
+    }
+    while (left.length) result.push(left.shift())
+    while (right.length) result.push(right.shift())
+    return result
+}
+let arr5 =[4,5,2,1,6,45,89,23,0,41];
+mergeSort(arr5)
+console.log(arr5)
+
+
+
+/**
+ * 堆排序Heap Sort
+ * @param arr
+ */
+let len;    //因为声明的多个函数都需要数据长度，所以把len设置成为全局变量
+function buildMaxHeap(arr) {   //建立大顶堆
+    len = arr.length;
+    for (let i = Math.floor(len/2); i >= 0; i--) {
+        heapify(arr, i);
+    }
+}
+
+function heapify(arr, i) {     //堆调整
+    let left = 2 * i + 1,
+        right = 2 * i + 2,
+        largest = i;
+
+    if (left < len && arr[left] > arr[largest]) {
+        largest = left;
+    }
+
+    if (right < len && arr[right] > arr[largest]) {
+        largest = right;
+    }
+
+    if (largest != i) {
+        swap(arr, i, largest);
+        heapify(arr, largest);
+    }
+}
+
+function swap(arr, i, j) {
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+function heapSort(arr) {
+    buildMaxHeap(arr);
+
+    for (let i = arr.length-1; i > 0; i--) {
+        swap(arr, 0, i);
+        len--;
+        heapify(arr, 0);
+    }
+    return arr;
+}
