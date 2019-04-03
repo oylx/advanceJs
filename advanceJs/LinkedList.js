@@ -52,7 +52,6 @@ let linklist1 = new LList();
 
 linklist1.insert('first','head')
 linklist1.insert('second','first')
-// linklist1.display()
-console.log(linklist1)
 var x =linklist1.find('first')
 console.log(x)
+linklist1.display()
