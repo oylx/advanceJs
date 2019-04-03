@@ -29,24 +29,6 @@ class LList{
             currentNode = currentNode.next
         }
     }
-    remove (element){
-        let index = this.indexOf(element);
-        return this.removeAt(index);
-    }
-    append (element){
-        let node = new Node(element),
-            current;
-        if (head === null){
-            head = node;
-            tail = node; //NEW
-        } else {
-            //NEW
-            tail.next = node;
-            node.prev = tail;
-            tail = node;
-        }
-        length++;
-    };
 }
 let linklist1 = new LList();
 
