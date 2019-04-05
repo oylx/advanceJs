@@ -136,6 +136,7 @@ Promise.prototype.finally = function (callback) {
             throw err;
         });
     });
+}
 Promise.race = function (promises) {
     return new Promise((resolve, reject) => {
         if (promises.length === 0) {
@@ -153,6 +154,7 @@ Promise.race = function (promises) {
         }
     });
 }
+
 Promise.all = function (promises) {
     return new Promise((resolve, reject) => {
         let index = 0;
@@ -180,7 +182,6 @@ Promise.all = function (promises) {
         }
     });
 }
-
 var promise1 = new Promise((resolve, reject) => {
     resolve(3);
 })
@@ -203,7 +204,7 @@ console.log(p2)
 setTimeout(function(){
     console.log('the stack is now empty');
     console.log(p2);
-});
+},0);
 
 
 
