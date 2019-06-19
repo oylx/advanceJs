@@ -11,13 +11,27 @@ function deepClone(obj) {
         throw new  Error('非对象')
     }
     let newObj = Array.isArray(obj)?[...obj]:{...obj};
-    console.log(newObj)
     Reflect.ownKeys(newObj).forEach(key=>{
         newObj[key] = isObj(obj[key])?deepClone(obj[key]):obj[key]
     })
     return newObj
 
 }
+
+// function deepClone1(obj) {
+//     function isObj(item) {
+//         return typeof item === 'object' && typeof item==='function' && item!==null
+//     }
+//     if(!isObj(obj)){
+//         throw new TypeError('not obj')
+//     }
+//     let newObj = Array.isArray(obj)?[...obj]:{...obj}
+//     Reflect.ownKeys(newObj).forEach(key=>{
+//         newObj[key] = isObj(obj[key])?deepClone(obj[key]):obj[key]
+//     })
+//     return newObj
+// }
+
 var obj ={
     'name':'oylx',
     'family':function (x) {
@@ -25,6 +39,8 @@ var obj ={
     }
 }
 var c = deepClone(obj);
+obj.name = 'sjh'
+console.log(c)
 
 
 /**
@@ -54,4 +70,11 @@ obj.b.d = obj.b
 const test = async () => {
     const clone = await structuralClone(obj)
     console.log(clone)
+}
+
+/**
+ * lodash的深拷贝函数
+ */
+function f() {
+
 }

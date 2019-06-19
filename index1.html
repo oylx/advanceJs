@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        .red{
+            background: red;
+        }
+        .green{
+            background: green;
+        }
+        .yellow{
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+<script>
+    const box = document.querySelector('#box');
+
+    function changeColor(delay,type){
+        box.className = type;
+        return new Promise((resolve)=>{
+            setTimeout(resolve,delay)
+        })
+    }
+    async function loop() {
+        while (true) {
+            await changeColor(1000,'green')
+            await changeColor(1000,'yellow')
+            await changeColor(1000,'red')
+        }
+    }
+    loop()
+</script>
+<script>
+    // function 买菜() {
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(function () {
+    //             console.log('买菜')
+    //             resolve(['西红柿', '鸡蛋', '油菜']);
+    //         }, 0)
+    //
+    //     })
+    // }
+    //
+    // function 做饭() {
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(function () {
+    //             console.log('做饭')
+    //             resolve({
+    //                 主食: '米饭',
+    //                 菜: ['西红柿炒鸡蛋', '清炒油菜']
+    //             })
+    //         }, 1)
+    //     })
+    // }
+    //
+    // function 送饭(resolve, reject) {
+    //     return new Promise((resolve, reject) => {
+    //         console.log('送饭')
+    //         resolve('老婆的么么哒');
+    //     })
+    // }
+    //
+    // function 通知我() {
+    //     return new Promise((resolve, reject) => {
+    //         console.log('给保姆加100块钱奖金');
+    //     })
+    // }
+    //
+    // 买菜().then((买好的菜) => {
+    //     console.log(买好的菜)
+    //     做饭()
+    // })
+    //     .then((做好的饭) => {
+    //         送饭()
+    //     })
+    //     .then((送饭结果) => {
+    //         通知我();
+    //     })
+</script>
+</html>

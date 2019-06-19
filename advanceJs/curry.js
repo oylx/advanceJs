@@ -68,14 +68,41 @@ var curried = curry(abc);
 //     }
 // }
 console.log(curried(1)(2)(3))
-function curry(func,fixedParams){
-    if (!Array.isArray(fixedParams)){fixedParams=[]}
-    return function(){
-        var newParams = [].slice.call(arguments);
-        if(newParams.length+fixedParams.length<func.length){
-            return curry(func,fixedParams.concat(newParams))
+
+// function curry(fn, args) {
+//     var length = fn.length;
+//     var args = args || [];
+//     return function() {
+//         var newArgs = args.concat(Array.from(arguments));
+//         if(newArgs.length < length) {
+//             return curry.call(this, fn, newArgs);
+//         } else {
+//             return fn.apply(this, newArgs)
+//         }
+//     }
+// }
+function curry(fn, args) {
+    let length = fn.length;
+    args = args || [];
+    return function () {
+        var newArgs = args.concat(Array.from(arguments));
+        if(newArgs.length<length){
+            return curry.call(this,fn,newArgs)
         }else{
-            return func.apply(undefined,fixedParams.concat(newParams))
+            return fn.apply(this,newArgs)
+        }
+    }
+}
+
+function curry(fn, args) {
+    let length = fn.length
+    args = args || []
+    return function () {
+        let newArgs = args.concat(Array.from(arguments))
+        if(newArgs.length<length){
+            return curry.call(this,fn,newArgs)
+        }else{
+            return fn.apply(this,newArgs)
         }
     }
 }

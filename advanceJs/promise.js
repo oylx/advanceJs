@@ -38,49 +38,49 @@
 //     console.log(res)
 // })
 
-// function 买菜() {
-//     return new Promise((resolve,reject)=>{
-//         setTimeout(function(){
-//             console.log('买菜')
-//             resolve(['西红柿','鸡蛋','油菜']);
-//         },0)
-//
-//     })
-// }
-// function 做饭(){
-//     return new Promise((resolve,reject)=>{
-//         setTimeout(function(){
-//             console.log('做饭')
-//             resolve ({
-//                 主食: '米饭',
-//                 菜: ['西红柿炒鸡蛋','清炒油菜']
-//             })
-//         },1)
-//     })
-// }
-// function 送饭(resolve,reject){
-//     return new Promise((resolve,reject)=>{
-//         console.log('送饭')
-//         resolve('老婆的么么哒');
-//     })
-// }
-// function 通知我(){
-//     return new Promise((resolve,reject)=>{
-//         console.log('给保姆加100块钱奖金');
-//     })
-// }
-//
+function 买菜() {
+    return new Promise((resolve,reject)=>{
+        setTimeout(function(){
+            console.log('买菜')
+            resolve(['西红柿','鸡蛋','油菜']);
+        },0)
 
-// new Promise(买菜)
-//     .then((买好的菜)=>{
-//         return new Promise(做饭);
-//     })
-//     .then((做好的饭)=>{
-//         return new Promise(送饭);
-//     })
-//     .then((送饭结果)=>{
-//         电话通知我();
-//     })
+    })
+}
+function 做饭(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(function(){
+            console.log('做饭')
+            resolve ({
+                主食: '米饭',
+                菜: ['西红柿炒鸡蛋','清炒油菜']
+            })
+        },1)
+    })
+}
+function 送饭(resolve,reject){
+    return new Promise((resolve,reject)=>{
+        console.log('送饭')
+        resolve('老婆的么么哒');
+    })
+}
+function 通知我(){
+    return new Promise((resolve,reject)=>{
+        console.log('给保姆加100块钱奖金');
+    })
+}
+
+
+new Promise(买菜)
+    .then((买好的菜)=>{
+        return new Promise(做饭);
+    })
+    .then((做好的饭)=>{
+        return new Promise(送饭);
+    })
+    .then((送饭结果)=>{
+        电话通知我();
+    })
 
 // (async ()=>{
 //     let 蔬菜 = await 买菜();

@@ -28,3 +28,17 @@ let p = onWatch(
 )
 p.a = 2 // 监听到属性a改变
 p.c // 'a' = 2
+
+var myObject={
+    foo:1,
+    bar:2,
+    get baz(){
+        return this.foo+this.bar
+    }
+}
+var myReceiver={
+    foo:3,
+    bar:3
+}
+Reflect.get(myObject,'baz',myReceiver)
+var x =myReceiver.baz()

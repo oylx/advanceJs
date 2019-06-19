@@ -20,3 +20,18 @@ class Solider extends Human{
 
 var solider = new Solider({name:'oylx',age:28,战斗力:100,id:20});
 console.dir(solider)
+
+class Animal{
+    constructor(){
+        this._type='dog'
+    }
+    static eat(){
+        console.log('eat')
+    }
+    get type(){
+        return this._type
+    }
+    set type(val){
+        this._type=val
+    }
+}

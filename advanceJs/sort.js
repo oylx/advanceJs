@@ -138,7 +138,6 @@ function bucketSort(arr, bucketSize) {
 
     arr.length = 0;
     for (i = 0; i < buckets.length; i++) {
-                           //对每个桶进行排序，这里使用了插入排序
         for (let j = 0; j < buckets[i].length; j++) {
             arr.push(buckets[i][j]);
         }
