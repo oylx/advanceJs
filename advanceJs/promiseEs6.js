@@ -6,10 +6,11 @@ class Promise{
         this.onResolvedCallbacks =[];
         this.onRejectedCallbacks =[];
         let resolve = value=>{
-            if(this.state==='pending'){}
-            this.state ='fulfilled';
-            this.value = value;
-            this.onResolvedCallbacks.forEach(fn=>fn())
+            if(this.state==='pending'){
+              this.state ='fulfilled';
+              this.value = value;
+              this.onResolvedCallbacks.forEach(fn=>fn())
+            }
         };
         let reject = reason=>{
             if(this.state==='pending'){

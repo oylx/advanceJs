@@ -18,7 +18,7 @@
 <input type="text" id="input">
 <div id="root"></div>
 <button id="btn">点我</button>
-</body>
+</body>∫
 <script>
     // //生成[8,8,8,8]
     // (new Array(5)).join('8').split('')
@@ -28,4 +28,12 @@
 <!--<script src="https://cdn.bootcss.com/react/16.4.0/umd/react.production.min.js"></script>-->
 <!--<script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.production.min.js"></script>-->
 <!--<script src="./reactjs/demo.js"></script>-->
+<script>
+    var btn = document.querySelector('#btn');
+    for(let i =0;i<10;i++){
+        btn.addEventListener('click',()=>{
+            console.log('click')
+        })
+    }
+</script>
 </html>
