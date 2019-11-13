@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: {
-    app: './es7Decorator.js' // 需要打包的文件入口
+    app: './es7EditClass.js' // 需要打包的文件入口
   },
   module: {
     rules: [
