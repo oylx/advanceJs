@@ -4,8 +4,8 @@
  * Singleton.getInstance实现了在需要的时候创建单例
  * @type {{getInstance}}
  */
-var Singleton  =(function () {
-   var instance;
+const Singleton  =(function () {
+   let instance;
    function createInstance() {
        return {a:1,b:2}
    }
@@ -17,16 +17,29 @@ var Singleton  =(function () {
            return instance
        }
    }
-})()
-var instance1 = Singleton.getInstance()
-var instance2 = Singleton.getInstance()
+})();
+const instance1 = Singleton.getInstance();
+const instance2 = Singleton.getInstance();
 
+
+class SingleDog {
+    show() {
+        console.log('我是一个单例对象');
+    }
+    static getInstance() {
+        if(!SingleDog.instance) {
+            SingleDog.instance = new SingleDog();
+        }
+        return SingleDog.instance;
+    }
+
+}
 
 /**
  * 创建遮罩层
  * @type {{getInstance}}
  */
-var createMask = (function () {
+const createMask = (function () {
     let mask;
     function createInstance() {
 
@@ -50,7 +63,7 @@ var createMask = (function () {
             return mask
         }
     }
-})()
+})();
 /**
  * 创建窗口
  * @type {{getInstance}}
@@ -80,13 +93,33 @@ let createLogin = (function () {
            return login
        }
    }
-})()
+})();
 document.getElementById('btn').onclick = function() {
-    var oMask = createMask.getInstance();
+    const oMask = createMask.getInstance();
     oMask.style.display = 'block';
-    var oLogin = createLogin.getInstance();
+    const oLogin = createLogin.getInstance();
     oLogin.style.display = 'block';
-    var w = parseInt(oLogin.clientWidth);
-    var h = parseInt(oLogin.clientHeight);
-}
+    const w = parseInt(oLogin.clientWidth);
+    const h = parseInt(oLogin.clientHeight);
+};
 
+
+class Storage {
+    static getInsatance () {
+        if(!Storage.instance) {
+            Storage.instance = new Storage();
+        }
+        return Storage.instance
+    }
+    getItem (key) {
+        return localStorage.getItem(key)
+    }
+    setItem (key, value) {
+        return localStorage.setItem(key,value)
+    }
+}
+const storage1 = Storage.getInsatance();
+const storage2 = Storage.getInsatance();
+storage1.setItem('name','xiaoqi');
+storage1.getItem('name');
+storage2.getItem('name');

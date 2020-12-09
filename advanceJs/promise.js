@@ -38,47 +38,47 @@
 //     console.log(res)
 // })
 
-function 买菜() {
-    return new Promise((resolve,reject)=>{
-        setTimeout(function(){
+function 买菜 () {
+    return new Promise((resolve, reject) => {
+        setTimeout(function () {
             console.log('买菜')
-            resolve(['西红柿','鸡蛋','油菜']);
-        },0)
+            resolve(['西红柿', '鸡蛋', '油菜']);
+        }, 0)
 
     })
 }
-function 做饭(){
-    return new Promise((resolve,reject)=>{
-        setTimeout(function(){
+function 做饭 () {
+    return new Promise((resolve, reject) => {
+        setTimeout(function () {
             console.log('做饭')
-            resolve ({
+            resolve({
                 主食: '米饭',
-                菜: ['西红柿炒鸡蛋','清炒油菜']
+                菜: ['西红柿炒鸡蛋', '清炒油菜']
             })
-        },1)
+        }, 1)
     })
 }
-function 送饭(resolve,reject){
-    return new Promise((resolve,reject)=>{
+function 送饭 (resolve, reject) {
+    return new Promise((resolve, reject) => {
         console.log('送饭')
         resolve('老婆的么么哒');
     })
 }
-function 通知我(){
-    return new Promise((resolve,reject)=>{
+function 通知我 () {
+    return new Promise((resolve, reject) => {
         console.log('给保姆加100块钱奖金');
     })
 }
 
 
 new Promise(买菜)
-    .then((买好的菜)=>{
+    .then((买好的菜) => {
         return new Promise(做饭);
     })
-    .then((做好的饭)=>{
+    .then((做好的饭) => {
         return new Promise(送饭);
     })
-    .then((送饭结果)=>{
+    .then((送饭结果) => {
         电话通知我();
     })
 
@@ -89,8 +89,8 @@ new Promise(买菜)
 //     await 通知我(送饭结果);
 // })();
 
-class Promise{
-    constructor(executor){
+class Promise {
+    constructor(executor) {
         this.state = 'pending';
         this.value = undefined;
         this.reason = undefined;
@@ -100,23 +100,23 @@ class Promise{
             if (this.state === 'pending') {
                 this.state = 'fulfilled';
                 this.value = value;
-                this.onResolvedCallbacks.forEach(fn=>fn());
+                this.onResolvedCallbacks.forEach(fn => fn());
             }
         };
         let reject = reason => {
             if (this.state === 'pending') {
                 this.state = 'rejected';
                 this.reason = reason;
-                this.onRejectedCallbacks.forEach(fn=>fn());
+                this.onRejectedCallbacks.forEach(fn => fn());
             }
         };
-        try{
+        try {
             executor(resolve, reject);
         } catch (err) {
             reject(err);
         }
     }
-    then(onFulfilled,onRejected) {
+    then (onFulfilled, onRejected) {
         onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : value => value;
         onRejected = typeof onRejected === 'function' ? onRejected : err => { throw err };
         let promise2 = new Promise((resolve, reject) => {
@@ -165,12 +165,12 @@ class Promise{
         });
         return promise2;
     }
-    catch(fn){
-        return this.then(null,fn);
+    catch (fn) {
+        return this.then(null, fn);
     }
 }
-function resolvePromise(promise2, x, resolve, reject){
-    if(x === promise2){
+function resolvePromise (promise2, x, resolve, reject) {
+    if (x === promise2) {
         return reject(new TypeError('Chaining cycle detected for promise'));
     }
     let called;
@@ -179,11 +179,11 @@ function resolvePromise(promise2, x, resolve, reject){
             let then = x.then;
             if (typeof then === 'function') {
                 then.call(x, y => {
-                    if(called)return;
+                    if (called) return;
                     called = true;
                     resolvePromise(promise2, y, resolve, reject);
                 }, err => {
-                    if(called)return;
+                    if (called) return;
                     called = true;
                     reject(err);
                 })
@@ -191,7 +191,7 @@ function resolvePromise(promise2, x, resolve, reject){
                 resolve(x);
             }
         } catch (e) {
-            if(called)return;
+            if (called) return;
             called = true;
             reject(e);
         }
@@ -200,41 +200,41 @@ function resolvePromise(promise2, x, resolve, reject){
     }
 }
 //resolve方法
-Promise.resolve = function(val){
-    return new Promise((resolve,reject)=>{
+Promise.resolve = function (val) {
+    return new Promise((resolve, reject) => {
         resolve(val)
     });
 }
 //reject方法
-Promise.reject = function(val){
-    return new Promise((resolve,reject)=>{
+Promise.reject = function (val) {
+    return new Promise((resolve, reject) => {
         reject(val)
     });
 }
 //race方法
-Promise.race = function(promises){
-    return new Promise((resolve,reject)=>{
-        for(let i=0;i<promises.length;i++){
-            promises[i].then(resolve,reject)
+Promise.race = function (promises) {
+    return new Promise((resolve, reject) => {
+        for (let i = 0; i < promises.length; i++) {
+            promises[i].then(resolve, reject)
         };
     })
 }
 //all方法(获取所有的promise，都执行then，把结果放到数组，一起返回)
-Promise.all = function(promises){
+Promise.all = function (promises) {
     let arr = [];
     let i = 0;
-    function processData(index,data){
+    function processData (index, data) {
         arr[index] = data;
         i++;
-        if(i == promises.length){
+        if (i == promises.length) {
             resolve(arr);
         };
     };
-    return new Promise((resolve,reject)=>{
-        for(let i=0;i<promises.length;i++){
-            promises[i].then(data=>{
-                processData(i,data);
-            },reject);
+    return new Promise((resolve, reject) => {
+        for (let i = 0; i < promises.length; i++) {
+            promises[i].then(data => {
+                processData(i, data);
+            }, reject);
         };
     });
 }

@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        #box{
-            width:200px;
+        #box {
+            width: 200px;
             padding: 10px;
             border: 1px solid #000;
             box-sizing: content-box;
         }
     </style>
 </head>
+
 <body>
-<input type="text" id="input">
-<div id="root"></div>
-<button id="btn">点我</button>
-</body>∫
+    <input type="text" id="input">
+    <div id="root"></div>
+    <button id="btn">点我</button>
+</body>
 <script>
     // //生成[8,8,8,8]
     // (new Array(5)).join('8').split('')
 </script>
-<script src="./advanceJs/mvvm.js"></script>
+<script src="./advanceJs/test.js"></script>
 <!--<script src="./advanceJs/promiseEs6.js" defer="true"></script>-->
 <!--<script src="https://cdn.bootcss.com/react/16.4.0/umd/react.production.min.js"></script>-->
 <!--<script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.production.min.js"></script>-->
 <!--<script src="./reactjs/demo.js"></script>-->
 <script>
     var btn = document.querySelector('#btn');
-    for(let i =0;i<10;i++){
-        btn.addEventListener('click',()=>{
+    for (let i = 0; i < 10; i++) {
+        btn.addEventListener('click', () => {
             console.log('click')
         })
     }
 </script>
+
 </html>

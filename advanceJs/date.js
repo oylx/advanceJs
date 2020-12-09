@@ -1,5 +1,4 @@
-前端的各种日期操作
-
+// 前端的各种日期操作
 
 
 // 获取当前时间戳
@@ -22,7 +21,7 @@ var timestamp = +new Date() + 24*60*60*1000;
 var timestamp = new Date(new Date().toLocaleDateString()).getTime();
 
 // 今日最晚时间 23:59:59的时间戳
-let timestamp = new Date(new Date().toLocaleDateString()).getTime()+24*60*60*1000-1;
+var timestamp = new Date(new Date().toLocaleDateString()).getTime()+24*60*60*1000-1;
 
 
 /**
