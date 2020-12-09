@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "fix": "eslint \"advance/*.@(vue|js|jsx)\"  --fix && prettier \"advance/*.@(c|le|sc)ss\"  --write"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oylx/advanceJs.git"
