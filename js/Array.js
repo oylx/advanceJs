@@ -1,3 +1,10 @@
+// 改变原数组的API:
+// push()，pop(),
+// shift()，unshift(),
+// reverse(),
+// splice()
+
+
 // 1.构造函数
 // Array是 JavaScript 的原生对象，同时也是一个构造函数，可以用它生成新的数组。
 var arr = new Array(2);// 等同于
