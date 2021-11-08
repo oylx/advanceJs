@@ -5,23 +5,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "1",
-      "type": "node",
+      "type": "pwa-node",
       "request": "launch",
-      "runtimeExecutable": "node",
-      "args": [
-        "${workspaceFolder}/js/Attributes.js"
-      ]
-    },
-    {
-      "name": "调试 Node.js 程序 - args",
-      "type": "node",
-      "request": "launch",
-      "runtimeExecutable": "node",
+      "name": "Launch Program",
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/js/Attributes.js"
+      "program": "${workspaceFolder}/advanceJs/sugarTest.js"
     }
   ]
 }
