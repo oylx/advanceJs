@@ -11,7 +11,7 @@
 （1）value,value是该属性的属性值，默认为undefined。
 （2）writable,writable是一个布尔值，表示属性值（value）是否可改变（即是否可写），默认为true。
 （3）enumerable,enumerable是一个布尔值，表示该属性是否可遍历，默认为true。如果设为false，会使得某些操作（比如for...in循环、Object.keys()）跳过该属性。
-（4）configurable,configurable是一个布尔值，表示可配置性，默认为true。如果设为false，将阻止某些操作改写该属性，比如无法删除该属性，也不得改变该属性的属性描述对象（value属性除外）。也就是说，configurable属性控制了属性描述对象的可写性。
+（4）configurable,configurable是一个布尔值，表示可配置性，1.目标属性是否可以使用delete删除;2.目标属性是否可以再次设置特性。默认为true。如果设为false，将阻止某些操作改写该属性，比如无法删除该属性，也不得改变该属性的属性描述对象（value属性除外）。也就是说，configurable属性控制了属性描述对象的可写性。
 （5）get,get是一个函数，表示该属性的取值函数（getter），默认为undefined。
 （6）set,set是一个函数，表示该属性的存值函数（setter），默认为undefined。
 */
@@ -269,8 +269,81 @@ function fn10 () {
   Object.isExtensible(obj) // false
 }
 
+// 对象属性的枚举
+// 1.for ... in
+// 循环可以遍历对象中所有可枚举的对象属性(包括对象自有属性和继承的属性)。注意:会因为各个浏览器不同导致对象属性遍历的顺序与当初构建时的顺序不一致
+// 使用 for...in迭代，遍历出【自身】以及【原型链】上的【可枚举】的属性，通过hasOwnProperty进行筛选能遍历出自身可枚举属性
+// for (prop in obj) {
+//   if (!obj.hasOwnProperty(prop)) continue; // 跳过继承属性
+// }
+// 2.Object.keys()
+// 直接遍历出的自身可枚举属性组成的数组
+// 3.Object.getOwnPropertyNames()
+// 可以访问自身可枚举属性与不可枚举属性
+// 4.for ... of
+{
+  function Person () {
+    this.name = 'fyflying'
+  }
+  Person.prototype = {
+    hobby: 'coding'
+  }
+  var person = new Person()
+  Object.defineProperty(person, 'sex', {
+    value: 'female'
+  })
+  for (var item in person) {
+    console.log(item + ':' + person[item])
+  }
+  // name:fyflying hobby:coding
+  Object.keys(person) // ["name"]
+  JSON.stringify(person) //"{"name":"fyflying"}"
 
+}
 
+{
+  var obj = {}
+  //第一种情况：writable设置为false，不能重写。
+  Object.defineProperty(obj, "newKey", {
+    value: "hello",
+    writable: false
+  });
+  //更改newKey的值
+  obj.newKey = "change value";
+  console.log(obj.newKey);  //hello
+
+  //第二种情况：writable设置为true，可以重写
+  Object.defineProperty(obj, "newKey", {
+    value: "hello",
+    writable: true
+  });
+  //更改newKey的值
+  obj.newKey = "change value";
+  console.log(obj.newKey);  //change value
+}
+{
+  var obj = {}
+  //第一种情况：enumerable设置为false，不能被枚举。
+  Object.defineProperty(obj, "newKey", {
+    value: "hello",
+  });
+
+  //枚举对象的属性
+  for (var attr in obj) {
+    console.log(attr);
+  }
+  //第二种情况：enumerable设置为true，可以被枚举。
+  Object.defineProperty(obj, "newKey", {
+    value: "hello",
+    writable: false,
+    enumerable: true
+  });
+
+  //枚举对象的属性
+  for (var attr in obj) {
+    console.log(attr);  //newKey
+  }
+}
 
 
 

@@ -10,8 +10,8 @@
 // function abc(x,y,z){
 //     return [x,y,z]
 // }
-// var _curry = curry(abc);
-// var x = _curry(1)(2)(3);
+// const _curry = curry(abc);
+// const x = _curry(1)(2)(3);
 // console.log(abc.length)
 
 // function buyFriut(){
@@ -21,7 +21,7 @@
 //         }, 10000);
 //     })
 // }
-// var result = await buyFriut();
+// const result = await buyFriut();
 // promise.then(()=>{
 //     console.log('success')
 // },()=>{
@@ -39,7 +39,7 @@
 //         return this
 //     }
 // }
-// var promise = new Promise1((resolve,reject)=>{
+// const promise = new Promise1((resolve,reject)=>{
 //     setTimeout(()=>{
 //         resolve(101)
 //     },1000)
@@ -54,11 +54,10 @@
 function abc(a,b,c){
     return [a,b,c];
 }
-var curried = curry(abc);
 // function curry(func,fixedParams){
 //     if(!Array.isArray(fixedParams)){fixedParams=[]}
 //     return function(){
-//         var newParams = [].slice.call(arguments);
+//         const newParams = [].slice.call(arguments);
 //         if(fixedParams.length+newParams.length<func.length){
 //             return curry(func,fixedParams.concat(newParams));
 //         }else{
@@ -67,34 +66,8 @@ var curried = curry(abc);
 
 //     }
 // }
-console.log(curried(1)(2)(3))
 
-// function curry(fn, args) {
-//     var length = fn.length;
-//     var args = args || [];
-//     return function() {
-//         var newArgs = args.concat(Array.from(arguments));
-//         if(newArgs.length < length) {
-//             return curry.call(this, fn, newArgs);
-//         } else {
-//             return fn.apply(this, newArgs)
-//         }
-//     }
-// }
-function curry(fn, args) {
-    let length = fn.length;
-    args = args || [];
-    return function () {
-        var newArgs = args.concat(Array.from(arguments));
-        if(newArgs.length<length){
-            return curry.call(this,fn,newArgs)
-        }else{
-            return fn.apply(this,newArgs)
-        }
-    }
-}
-
-function curry(fn, args) {
+function curry_old(fn, args) {
     let length = fn.length
     args = args || []
     return function () {
@@ -106,3 +79,77 @@ function curry(fn, args) {
         }
     }
 }
+
+{
+
+// 第二版
+    function sub_curry(fn) {
+        const args = [].slice.call(arguments, 1);
+        return function() {
+            return fn.apply(this, args.concat([].slice.call(arguments)));
+        };
+    }
+
+    function curry(fn, length) {
+
+        length = length || fn.length;
+
+        const slice = Array.prototype.slice;
+
+        return function() {
+            if (arguments.length < length) {
+                const combined = [fn].concat(slice.call(arguments));
+                return curry(sub_curry.apply(this, combined), length - arguments.length);
+            } else {
+                return fn.apply(this, arguments);
+            }
+        };
+    }
+    const x = function(a, b, c) {
+        return [a, b, c];
+    }
+    const fn = curry(x);
+
+    fn("a", "b", "c") // ["a", "b", "c"]
+    fn("a", "b")("c") // ["a", "b", "c"]
+    fn("a")("b")("c") // ["a", "b", "c"]
+    fn("a")("b", "c") // ["a", "b", "c"]
+
+}
+
+{
+    function sub_curry(fn){
+        return function(){
+            return fn()
+        }
+    }
+
+    function curry(fn, length){
+        length = length || 4;
+        return function(){
+            if (length > 1) {
+                return curry(sub_curry(fn), --length)
+            }
+            else {
+                return fn()
+            }
+        }
+    }
+
+    const fn0 = function(){
+        console.log(1)
+    }
+
+    const fn1 = curry(fn0)
+
+    fn1()()()() // 1
+
+}
+
+{
+    let fn = () =>a => b => c => a+ b+ c
+    let res = fn()
+    let x = res(1)(2)(3)
+    console.log(x);
+}
+
