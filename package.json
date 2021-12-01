@@ -6,7 +6,8 @@
   "scripts": {
     "dev": " node ./js/Object.js",
     "test": "mocha -r ts-node/register test/**/*.ts",
-    "fix": "eslint \"advance/*.@(vue|js|jsx)\"  --fix && prettier \"advance/*.@(c|le|sc)ss\"  --write"
+    "fix": "eslint \"advance/*.@(vue|js|jsx)\"  --fix && prettier \"advance/*.@(c|le|sc)ss\"  --write",
+    "reinstall": "rimraf node_modules && npm i"
   },
   "repository": {
     "type": "git",
