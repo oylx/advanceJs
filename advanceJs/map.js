@@ -73,6 +73,7 @@
   }
   if (!dep.has(activeEffect)) {
     dep.add(activeEffect)
+
     // activeEffect.deps.push(dep)
     // ...
   }
