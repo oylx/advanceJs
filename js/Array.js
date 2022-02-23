@@ -1,12 +1,13 @@
 // 改变原数组的API:
-// push()，pop(),
-// shift()，unshift(),
+// push(),pop(),
+// shift(),unshift(),
 // reverse(),
 // splice()
+// sort()
 
 
 // 1.构造函数
-// Array是 JavaScript 的原生对象，同时也是一个构造函数，可以用它生成新的数组。
+// Array是 JavaScript 的原生对象,同时也是一个构造函数，可以用它生成新的数组。
 var arr = new Array(2);// 等同于
 var arr = Array(2);
 arr.length; // 2
@@ -65,7 +66,7 @@ console.log(arr.toString());
 var arr = ['a', 'b', 'c'];
 
 console.log([1, 2].map(function (e) {
- return this[e];
+  return this[e];
 }, arr));
 
 // 如果数组有空位，map方法的回调函数在这个位置不会执行，会跳过数组的空位
@@ -82,10 +83,10 @@ var f = function (n) { return 'a'; };
 
 var arr = [1, 2, 3];
 arr.forEach(v => {
- if (v === 2) {
-  return;
- }
- console.log(v);
+  if (v === 2) {
+    return;
+  }
+  console.log(v);
 });
 
 // for (var i = 0; i < arr.length; i++) {
@@ -110,12 +111,12 @@ arr.forEach(v => {
 // 当前位置（从0开始）
 // 原数组
 let res = [1, 2, 3, 4, 5].reduce(function (a, b) {
- return a - b;
+  return a - b;
 });
 console.log(res);
 
-function substract(prev, cur) {
- return prev - cur;
+function substract (prev, cur) {
+  return prev - cur;
 }
 
 [3, 2, 1].reduce(substract); // 0
@@ -126,14 +127,14 @@ function substract(prev, cur) {
 // 还可以接受第二个参数，表示搜索的开始位置
 // 这两个方法不能用来搜索NaN的位置，即它们无法确定数组成员是否包含NaN，因为这两个方法内部，使用严格相等运算符（===）进行比较，而NaN是唯一一个不等于自身的值
 var users = [
- {
-  name: 'tom',
-  email: 'tom@example.com'
- },
- {
-  name: 'peter',
-  email: 'peter@example.com'
- }
+  {
+    name: 'tom',
+    email: 'tom@example.com'
+  },
+  {
+    name: 'peter',
+    email: 'peter@example.com'
+  }
 ];
 var res1 = users.map(user => user.email).filter(email => /^t/.test(email));
 console.log(res1);

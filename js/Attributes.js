@@ -2,9 +2,9 @@
 /*
 {
   value: 123,
-  writable: false,
+  writable: true,
   enumerable: true,
-  configurable: false,
+  configurable: true,
   get: undefined,
   set: undefined
 }
@@ -19,8 +19,8 @@
 // 2.Object.getOwnPropertyDescriptor()
 // Object.getOwnPropertyDescriptor方法可以获取属性描述对象。它的第一个参数是一个对象，第二个参数是一个字符串，对应该对象的某个属性名。
 
-var obj = { p: 'a' };
-Object.getOwnPropertyDescriptor(obj, 'p')
+const obj1 = { p: 'a' };
+Object.getOwnPropertyDescriptor(obj1, 'p')
 // Object { value: "a",
 //   writable: true,
 //   enumerable: true,
@@ -32,13 +32,13 @@ Object.getOwnPropertyDescriptor(obj, 'p')
 // 这跟Object.keys的行为不同，Object.keys只返回对象自身的可遍历属性的全部属性名。
 
 
-var obj = Object.defineProperties({}, {
+var obj2 = Object.defineProperties({}, {
   p1: { value: 1, enumerable: true },
   p2: { value: 2, enumerable: false }
 });
 
-Object.getOwnPropertyNames(obj)// ["p1", "p2"]
-Object.keys(obj)//["p1"]
+Object.getOwnPropertyNames(obj2)// ["p1", "p2"]
+Object.keys(obj2)//["p1"]
 Object.getOwnPropertyNames([]) // [ 'length' ]
 Object.keys([]) // []
 Object.getOwnPropertyNames(Object.prototype)
@@ -55,17 +55,17 @@ Object.keys(Object.prototype) // []
 // Object.defineProperty方法允许通过
 // Object.defineProperty(object, propertyName, attributesObject),方法接受三个参数。
 
-var obj = Object.defineProperty({}, 'p', {
+const obj3 = Object.defineProperty({}, 'p', {
   value: 123,
   writable: false,
   enumerable: true,
   configurable: false
 });
 
-obj.p // 123
+obj3.p // 123
 
-obj.p = 246;
-obj.p // 123
+obj3.p = 246;
+obj3.p // 123
 
 // Object.defineProperties同时定义了obj对象的三个属性。其中，p3属性定义了取值函数get，即每次读取该属性，都会调用这个取值函数。
 // 注意，一旦定义了取值函数get（或存值函数set），就不能将writable属性设为true，或者同时定义value属性，否则会报错。
@@ -74,7 +74,9 @@ function fn1 () {
 
   Object.defineProperty(obj, 'p', {
     value: 123,
-    get: function () { return 456; }
+    get: function () {
+      return 456;
+    }
   });
   // value和get矛盾
 

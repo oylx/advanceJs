@@ -36,7 +36,7 @@
   console.log(map) // Map {"name" => "vuejs.cn", "age" => "18"}
   map.get('name') // vue3js.cn
   map.has('name') // true
-  map.delete('name')
+  map.delete('name') // true
   map.has(name) // false
   map.clear() // Map {}
 }
@@ -51,13 +51,13 @@
   map.set('name', 'vue3js.cn')
   map.set('age', '18')
 
-  console.log([...map.keys()])  // ["name", "age"]
-  console.log([...map.values()])  // ["vue3js.cn", "18"]
+  console.log([...map.keys()]) // ["name", "age"]
+  console.log([...map.values()]) // ["vue3js.cn", "18"]
   console.log([...map.entries()]) // [['name','vue3js.cn'], ['age','18']]
 
   // name vuejs.cn
   // age 18
-  map.forEach((value, key) => { console.log(key, value) })
+  map.forEach((value, key) => console.log(key, value))
 }
 
 // 5.应用场景
@@ -107,12 +107,12 @@
     return obj
   }
   const map4 = new Map().set('name', 'vue3js.cn').set('age', '18')
-  mapToObj(map4)  // {name: "vue3js.cn", age: "18"}
+  mapToObj(map4) // {name: "vue3js.cn", age: "18"}
 }
 
 // 6.4Object 转为 Map{
 {
-  let obj = { "a": 1, "b": 2 };
+  let obj = { 'a': 1, 'b': 2 };
   let map5 = new Map(Object.entries(obj))
 }
 

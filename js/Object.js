@@ -8,15 +8,15 @@
 // 2.Object()
 // Object本身是一个函数，可以当作工具方法使用，将任意值转为对象。这个方法常用于保证某个值一定是对象。
 // 如果参数为空（或者为undefined和null），Object()返回一个空对象。
-var obj = Object();
+let obj = Object();
 // 等同于
-var obj = Object(undefined);
-var obj = Object(null);
+obj = Object(undefined);
+obj = Object(null);
 
 console.log(obj instanceof Object); // true
 console.log({ ...obj }); // true
 
-var obj = Object(1);
+obj = Object(1);
 obj instanceof Object // true
 obj instanceof Number
 console.log(obj);
@@ -44,7 +44,7 @@ console.log(res1, res2);
 
 // 4.热门API
 // 4.1 Object.prototype.valueOf(), 返回一个对象的“值”，默认情况下返回对象本身
-var obj = new Object(1);
+obj = new Object(1);
 console.log(obj.valueOf()); // 1
 
 // 4.2 Object.prototype.toString(),返回一个对象的字符串形式，默认情况下返回类型字符串
@@ -53,7 +53,7 @@ console.log(o2.toString()); // "[object Object]"
 // 通过自定义toString方法，可以让对象在自动类型转换时，得到想要的字符串形式。
 // 对象用于字符串加法时，会自动调用toString方法。由于自定义了toString方法，所以返回字符串hello world
 // 数组、字符串、函数、Date 对象调用toString方法，并不会返回[object Object]，因为它们都自定义了toString方法，覆盖原始方法
-var obj = new Object();
+obj = new Object();
 obj.toString = function () {
   return 'hello';
 };
@@ -101,7 +101,7 @@ type.isRegExp(/abc/) // true
 
 // 4.5 Object.prototype.hasOwnProperty()
 // 方法接受一个字符串作为参数，返回一个布尔值，表示该实例对象自身是否具有该属性。
-var obj = {
+obj = {
   p: 123
 };
 
@@ -137,11 +137,11 @@ Object.defineProperty(person, 'name', {
   configurable: true,
   enumerable: true,
   get () {
-    //当获取值的时候触发的函数    
+    //当获取值的时候触发的函数
     return n
   },
   set (val) {
-    //当设置值的时候触发的函数,设置的新值通过参数val拿到    
+    //当设置值的时候触发的函数,设置的新值通过参数val拿到
     n = val;
   }
 });
