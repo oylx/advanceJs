@@ -60,10 +60,66 @@ const arr2 = [
   '乔子筠',
   '杨昕淇'
 ]
-arr1.forEach(v => {
-  if (!arr2.includes(v)) {
+
+const sortResult = (data, type) => {
+  let result = []
+  switch (type) {
+    // 当比较的item为对象的某个属性时，value = item [key]
+
+    // 1.中文(按第一个文字)
+    case 'chinese':
+      result = data.sort((item1, item2) => {
+        const value1 = item1.charAt(0);
+        const value2 = item2.charAt(0);
+        // 这里localeCompare应该是不支持第二个参数的 但是并没有报错，请直接使用value1.localeCompare(value2)
+        return value1.localeCompare(value2, 'zh-CN');
+      })
+      break;
+    // 2.字母(按第一个字母且不区分大小写，请自行修改)
+    case 'letter':
+      result = data.sort((item1, item2) => {
+
+        //2.1不区分大小写
+        const value1 = item1.charAt(0).toLowerCase();
+        const value2 = item2.charAt(0).toLowerCase();
+        return value1.localeCompare(value2);
+
+        //2.2区分大小写
+        // const value1 = item1.charAt(0);
+        // const value2 = item2.charAt(0);
+
+        //测试2.2
+        const arr = ['A','a','b','B']
+        arr.sort(function (item1, item2) {
+          return item1.localeCompare(item2);
+        })
+        //输出["a", "A", "b", "B"]
+      })
+      break;
+    //3.数字
+    case 'number':
+      result = data.sort((item1, item2) => {
+        const value1 = item1;
+        const value2 = item2;
+        return value1 - value2;
+      })
+      break;
+
+    default:
+      result = data;
+      break;
+  }
+  return result;
+}
+const res1 = sortResult(arr1, 'chinese')
+console.log(res1)
+
+
+const res2 = sortResult(arr2, 'chinese')
+console.log(res2)
+
+res1.forEach(v => {
+  if (!res2.includes(v)) {
     console.log(v)
   }
 })
-arr1.sort((a,b) => a-b)
-arr2.sort((a,b) => a-b)
