@@ -8,9 +8,11 @@ const arr = [
   { index: 7, time: '2024.12.1', name: '打印7套语文试卷', cost: -65, purpose: '学习用途' },
   { index: 8, time: '2024.12.9', name: '打印19套数学试卷', cost: -148, purpose: '学习用途' },
   { index: 9, time: '2024.12.24', name: '打印13套语文试卷', cost: -179.4, purpose: '学习用途' },
-  { index: 10, time: '2025.02.11', name: '购买黑板报装饰材料', isNew: true, cost: -93, purpose: '班级需要' },
-  { index: 11, time: '2025.02.11', name: '购买黑板报装饰材料', isNew: true, cost: -65.96, purpose: '班级需要' },
-  { index: 12, time: '2025.02.11', name: '打印班级学号标签', isNew: true, cost: -270, purpose: '学习用途' },
+  { index: 10, time: '2025.02.11', name: '购买黑板报装饰材料', cost: -93, purpose: '班级需要' },
+  { index: 11, time: '2025.02.11', name: '购买黑板报装饰材料', cost: -65.96, purpose: '班级需要' },
+  { index: 12, time: '2025.02.11', name: '打印班级学号标签', cost: -270, purpose: '学习用途' },
+  { index: 12, time: '2025.02.18', name: '数学亮点试卷', isNew: true, cost: -756, purpose: '学习用途' },
+  { index: 12, time: '2025.02.24', name: '语文亮点试卷', isNew: true, cost: -810, purpose: '学习用途' },
 ]
 
 let newCost100 = 0
