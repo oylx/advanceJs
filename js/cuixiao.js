@@ -11,8 +11,16 @@ const arr = [
   { index: 10, time: '2025.02.11', name: '购买黑板报装饰材料', cost: -93, purpose: '班级需要' },
   { index: 11, time: '2025.02.11', name: '购买黑板报装饰材料', cost: -65.96, purpose: '班级需要' },
   { index: 12, time: '2025.02.11', name: '打印班级学号标签', cost: -270, purpose: '学习用途' },
-  { index: 12, time: '2025.02.18', name: '数学亮点试卷', isNew: true, cost: -756, purpose: '学习用途' },
-  { index: 12, time: '2025.02.24', name: '语文亮点试卷', isNew: true, cost: -810, purpose: '学习用途' },
+  { index: 13, time: '2025.02.18', name: '数学亮点试卷', cost: -756, purpose: '学习用途' },
+  { index: 14, time: '2025.02.24', name: '语文亮点试卷', cost: -810, purpose: '学习用途' },
+  { index: 15, time: '2025.03.06', name: '班级垃圾袋', cost: -16.7, purpose: '班级需要' },
+  { index: 16, time: '2025.05.20', name: '试卷退费', cost: -90, purpose: '试卷退费' },
+  { index: 17, time: '2025.05.20', name: '合唱比赛道具', cost: -160.66, purpose: '班级需要' },
+  { index: 18, time: '2025.05.26', name: '语文打印复习资料', cost: -60, purpose: '班级需要' },
+  { index: 19, time: '2025.08.29', name: '姓名贴', isNew: true, cost: -221.16, purpose: '班级需要' },
+  { index: 20, time: '2025.08.29', name: '开学典礼装饰', isNew: true, cost: -47.7, purpose: '班级需要' },
+  { index: 21, time: '2025.08.29', name: '垃圾袋等物品', isNew: true, cost: -26.13, purpose: '班级需要' },
+  { index: 22, time: '2025.08.31', name: '退班费', isNew: true, cost: -22, purpose: '班级需要' },
 ]
 
 let newCost100 = 0
