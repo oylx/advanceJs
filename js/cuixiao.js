@@ -17,10 +17,15 @@ const arr = [
   { index: 16, time: '2025.05.20', name: '试卷退费', cost: -90, purpose: '试卷退费' },
   { index: 17, time: '2025.05.20', name: '合唱比赛道具', cost: -160.66, purpose: '班级需要' },
   { index: 18, time: '2025.05.26', name: '语文打印复习资料', cost: -60, purpose: '班级需要' },
-  { index: 19, time: '2025.08.29', name: '姓名贴', isNew: true, cost: -221.16, purpose: '班级需要' },
-  { index: 20, time: '2025.08.29', name: '开学典礼装饰', isNew: true, cost: -47.7, purpose: '班级需要' },
-  { index: 21, time: '2025.08.29', name: '垃圾袋等物品', isNew: true, cost: -26.13, purpose: '班级需要' },
-  { index: 22, time: '2025.08.31', name: '退班费', isNew: true, cost: -22, purpose: '班级需要' },
+  { index: 19, time: '2025.08.29', name: '姓名贴', cost: -221.16, purpose: '班级需要' },
+  { index: 20, time: '2025.08.29', name: '开学典礼装饰', cost: -47.7, purpose: '班级需要' },
+  { index: 21, time: '2025.08.29', name: '垃圾袋等物品', cost: -26.13, purpose: '班级需要' },
+  { index: 22, time: '2025.08.31', name: '退班费', cost: -22, purpose: '班级需要' },
+  { index: 23, time: '2025.09.11', name: '100本语文方格本', isNew: true, cost: -120, purpose: '班级需要' },
+  { index: 24, time: '2025.09.18', name: '2个拖把', isNew: true, cost: -32.99, purpose: '班级需要' },
+  { index: 25, time: '2025.10.21', name: 'A4纸，表演，黑板贴扇子', isNew: true, cost: -174.64, purpose: '班级需要' },
+  { index: 26, time: '2025.11.03', name: '运动会KT板', isNew: true, cost: -72, purpose: '班级需要' },
+  { index: 27, time: '2025.11.05', name: '清洁工具', isNew: true, cost: -15.52, purpose: '班级需要' }
 ]
 
 let newCost100 = 0
