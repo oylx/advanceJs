@@ -28,6 +28,7 @@ const arr = [
   { index: 27, time: '2025.11.05', name: '清洁工具', isNew: true, cost: -15.52, purpose: '班级需要' }
 ]
 
+
 let newCost100 = 0
 let allCost100 = 0
 let left100 = 0
