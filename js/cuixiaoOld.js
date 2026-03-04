@@ -26,17 +26,9 @@ const arr = [
   { index: 25, time: '2025.10.21', name: 'A4纸，表演，黑板贴扇子', cost: -174.64, purpose: '班级需要' },
   { index: 26, time: '2025.11.03', name: '运动会KT板', cost: -72, purpose: '班级需要' },
   { index: 27, time: '2025.11.05', name: '清洁工具', cost: -15.52, purpose: '班级需要' },
-  { index: 28, time: '2025.11.10', name: '100本语文方格本', cost: -119.04, purpose: '班级需要' },
-  { index: 29, time: '2025.11.20', name: '数学期末试卷打印', cost: -90, purpose: '班级需要' },
-  { index: 30, time: '2025.11.29', name: '语文期末试卷打印', cost: -125, purpose: '班级需要' },
-  { index: 31, time: '2025.12.03', name: '班费自愿缴纳', cost: 4500, purpose: '班级需要' },
-  { index: 32, time: '2025.12.04', name: '语文作业本100本', cost: -120, purpose: '班级需要' },
-  { index: 33, time: '2025.12.29', name: '数学错题打印', cost: -18, purpose: '班级需要' },
-  { index: 34, time: '2025.12.28', name: '语文组词单打印', cost: -28, purpose: '班级需要' },
-  { index: 35, time: '2026.01.08', name: '语文期末复习试卷3套', cost: -24, purpose: '班级需要' },
-  { index: 36, time: '2026.02.27', name: '打印班级学号标签', isNew: true, cost: -225.15, purpose: '班级需要' },
-  { index: 37, time: '2026.03.02', name: '开学典礼拉花装饰', isNew: true, cost: -59.6, purpose: '班级需要' },
-  { index: 38, time: '2026.03.03', name: '开学板报材料装饰', isNew: true, cost: -228, purpose: '班级需要' },
+  { index: 28, time: '2025.11.10', name: '100本语文方格本', isNew: true, cost: -119.04, purpose: '班级需要' },
+  { index: 29, time: '2025.11.20', name: '数学期末试卷打印', isNew: true, cost: -90, purpose: '班级需要' },
+  { index: 30, time: '2025.11.29', name: '语文期末试卷打印', isNew: true, cost: -125, purpose: '班级需要' },
 
 ]
 
