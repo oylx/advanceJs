@@ -1,5 +1,5 @@
-const arr = [
-  { index: 1, time: '2024.09.14', name: '班费自愿缴纳', cost: 4500, purpose: '班级需要' },
+const arr0 = [
+  { index: 1, isCost: false, time: '2024.09.14', name: '班费自愿缴纳', cost: 4500, purpose: '班级需要' },
   { index: 2, time: '2024.09.18', name: '购买时钟', cost: -9.99, purpose: '班级需要' },
   { index: 3, time: '2024.10.08', name: '购买舞蹈道具', cost: -230, purpose: '运动会表演' },
   { index: 4, time: '2024.10.18', name: '购买运动会横幅', cost: -30, purpose: '运动会表演' },
@@ -20,7 +20,10 @@ const arr = [
   { index: 19, time: '2025.08.29', name: '姓名贴', cost: -221.16, purpose: '班级需要' },
   { index: 20, time: '2025.08.29', name: '开学典礼装饰', cost: -47.7, purpose: '班级需要' },
   { index: 21, time: '2025.08.29', name: '垃圾袋等物品', cost: -26.13, purpose: '班级需要' },
-  { index: 22, time: '2025.08.31', name: '退班费', cost: -22, purpose: '班级需要' },
+  { index: 22, time: '2025.08.31', name: '退班费', cost: -22, purpose: '班级需要' }
+]
+const arr = [
+  { index: 0, isCost: false, time: '2025.09.11', name: '结余', cost: 1068.8, purpose: '结余' },
   { index: 23, time: '2025.09.11', name: '100本语文方格本', cost: -120, purpose: '班级需要' },
   { index: 24, time: '2025.09.18', name: '2个拖把', cost: -32.99, purpose: '班级需要' },
   { index: 25, time: '2025.10.21', name: 'A4纸，表演，黑板贴扇子', cost: -174.64, purpose: '班级需要' },
@@ -29,14 +32,17 @@ const arr = [
   { index: 28, time: '2025.11.10', name: '100本语文方格本', cost: -119.04, purpose: '班级需要' },
   { index: 29, time: '2025.11.20', name: '数学期末试卷打印', cost: -90, purpose: '班级需要' },
   { index: 30, time: '2025.11.29', name: '语文期末试卷打印', cost: -125, purpose: '班级需要' },
-  { index: 31, time: '2025.12.03', name: '班费自愿缴纳', cost: 4500, purpose: '班级需要' },
+  { index: 31, isCost: false,  time: '2025.12.03', name: '班费自愿缴纳', cost: 4500, purpose: '班级需要' },
   { index: 32, time: '2025.12.04', name: '语文作业本100本', cost: -120, purpose: '班级需要' },
   { index: 33, time: '2025.12.29', name: '数学错题打印', cost: -18, purpose: '班级需要' },
   { index: 34, time: '2025.12.28', name: '语文组词单打印', cost: -28, purpose: '班级需要' },
   { index: 35, time: '2026.01.08', name: '语文期末复习试卷3套', cost: -24, purpose: '班级需要' },
-  { index: 36, time: '2026.02.27', name: '打印班级学号标签', isNew: true, cost: -225.15, purpose: '班级需要' },
-  { index: 37, time: '2026.03.02', name: '开学典礼拉花装饰', isNew: true, cost: -59.6, purpose: '班级需要' },
-  { index: 38, time: '2026.03.03', name: '开学板报材料装饰', isNew: true, cost: -228, purpose: '班级需要' },
+  { index: 36, time: '2026.02.27', name: '打印班级学号标签', cost: -225.15, purpose: '班级需要' },
+  { index: 37, time: '2026.03.02', name: '开学典礼拉花装饰', cost: -59.6, purpose: '班级需要' },
+  { index: 38, time: '2026.03.03', name: '开学板报材料装饰', cost: -228, purpose: '班级需要' },
+  { index: 39, time: '2026.03.10', name: '方格本100本', isNew: true, cost: -120, purpose: '班级需要' },
+  { index: 40, time: '2026.04.14', name: '方格本100本', isNew: true, cost: -120, purpose: '班级需要' },
+  { index: 41, time: '2026.04.26', name: '语文25套试卷打印', isNew: true, cost: -200, purpose: '班级需要' },
 
 ]
 
@@ -46,10 +52,10 @@ let allCost100 = 0
 let left100 = 0
 let lastLeft100 = 0
 for (let i = 0; i < arr.length; i++) {
-  const { cost, isNew = false } = arr[i]
+  const { cost, isNew = false, isCost = true } = arr[i]
   if (isNew) newCost100 += cost * 100
   else lastLeft100 += cost * 100
-  allCost100 += i === 0 ? 0 : cost * 100
+  allCost100 += isCost ? cost * 100 : 0
   left100 += cost * 100
 }
 const left = left100 / 100
