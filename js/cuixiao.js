@@ -22,7 +22,7 @@ const arr0 = [
   { index: 21, time: '2025.08.29', name: '垃圾袋等物品', cost: -26.13, purpose: '班级需要' },
   { index: 22, time: '2025.08.31', name: '退班费', cost: -22, purpose: '班级需要' }
 ]
-const arr = [
+const arr1 = [
   { index: 0, isCost: false, time: '2025.09.11', name: '结余', cost: 1068.8, purpose: '结余' },
   { index: 23, time: '2025.09.11', name: '100本语文方格本', cost: -120, purpose: '班级需要' },
   { index: 24, time: '2025.09.18', name: '2个拖把', cost: -32.99, purpose: '班级需要' },
@@ -40,9 +40,22 @@ const arr = [
   { index: 36, time: '2026.02.27', name: '打印班级学号标签', cost: -225.15, purpose: '班级需要' },
   { index: 37, time: '2026.03.02', name: '开学典礼拉花装饰', cost: -59.6, purpose: '班级需要' },
   { index: 38, time: '2026.03.03', name: '开学板报材料装饰', cost: -228, purpose: '班级需要' },
-  { index: 39, time: '2026.03.10', name: '方格本100本', isNew: true, cost: -120, purpose: '班级需要' },
-  { index: 40, time: '2026.04.14', name: '方格本100本', isNew: true, cost: -120, purpose: '班级需要' },
-  { index: 41, time: '2026.04.26', name: '语文25套试卷打印', isNew: true, cost: -200, purpose: '班级需要' },
+  { index: 39, time: '2026.03.10', name: '方格本100本', cost: -120, purpose: '班级需要' },
+  { index: 40, time: '2026.04.14', name: '方格本100本', cost: -120, purpose: '班级需要' },
+  { index: 41, time: '2026.04.26', name: '语文25套试卷打印', cost: -200, purpose: '班级需要' },
+  { index: 42, time: '2026.05.31', name: '数学期末复习试卷打印', isNew: true, cost: -147, purpose: '班级需要' },
+  { index: 43, time: '2026.05.31', name: '六一义卖物品1', isNew: true, cost: -17.64, purpose: '班级需要' },
+  { index: 44, time: '2026.05.31', name: '六一义卖物品2', isNew: true, cost: -81.6, purpose: '班级需要' },
+  { index: 45, time: '2026.06.3', name: '六一装饰物品采购', isNew: true, cost: -38.88, purpose: '班级需要' },
+  { index: 46, time: '2026.06.4', name: '语文单词单打印8个单元*48份', isNew: true, cost: -57.59, purpose: '班级需要' },
+]
+
+const arr = [
+  { index: 0, isCost: false, time: '2026.08.31', name: '结余', cost: 3334.15, purpose: '结余' },
+  { index: 47, time: '2025.08.31', name: '退班费（潘芊奕）', isNew: true, cost: -74, purpose: '班级需要' },
+  { index: 48, time: '2025.08.24', name: '开学大扫除物品', isNew: true, cost: -48.27, purpose: '班级需要' },
+  { index: 49, time: '2025.08.26', name: '姓名贴', isNew: true, cost: -179.73, purpose: '班级需要' },
+  { index: 50, time: '2025.08.29', name: '入学装饰物品', isNew: true, cost: -12.5, purpose: '班级需要' },
 
 ]
 
